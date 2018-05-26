@@ -1,0 +1,14 @@
+<stm_viewer>
+    <stm_value name="PepperQiMessaging/destinationId" alias="PepperQiMessaging/destinationId" watch="1" graph="1">
+        <color red="239" green="134" blue="60" />
+    </stm_value>
+    <stm_value name="ALTabletService/message" alias="ALTabletService/message" watch="1" graph="1">
+        <color red="180" green="40" blue="8" />
+    </stm_value>
+    <stm_value name="Pepper_1/DestinationList" alias="Pepper_1/DestinationList" watch="1" graph="1">
+        <color red="13" green="75" blue="166" />
+    </stm_value>
+    <stm_value name="PepperQiMessaging/fromtablet" alias="PepperQiMessaging/fromtablet" watch="1" graph="1">
+        <color red="18" green="222" blue="247" />
+    </stm_value>
+</stm_viewer>

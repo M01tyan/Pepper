@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>QiMessaging (メモリに出力)</title>
+    <script src="/libs/qimessaging/1.0/qimessaging.js"></script>
+    <script>
+      var session = new QiSession();
+
+      function sampleButtonClicked(dest, id) {
+        session.service("ALMemory").done(function (ALMemory) {
+          console.log("ALMemory取得成功");
+          ALMemory.raiseEvent("PepperQiMessaging/fromtablet", dest);
+          ALMemory.raiseEvent("PepperQiMessaging/destinationId", id);
+        });
+      }
+
+      function getDestination(){
+        session.service("ALMemory").done(function (ALMemory) {
+          ALMemory.getData("Pepper_1/DestinationList").done(function(data){
+            console.log(data.length);
+            for(i=0; i<data.length; i++){
+              var floor;
+              if(i < 4) floor = 1;
+              else if(i < 12) floor = 2;
+              else floor = 3
+              var destLists = document.getElementById('destinationButton');
+              var button = document.createElement('<button style="font-size: 6em" type="button" onclick="sampleButtonClicked('+data[i]+', '+floor+')">'+data[i]+'</button>');
+              destLists.appendChild(button);
+            }
+          });
+        });
+      }
+
+    </script>
+  </head>
+  <body onload="getDestination()">
+    <div style="font-size: 6em">
+      QiMessaging (メモリに出力)
+    </div>
+    <div class="destinationButton">
+    </div>
+
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('会議室1', 1)">会議室1</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('会議室2', 1)">会議室2</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('会議室3', 1)">会議室3</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('ホワイトボード室', 1)">ホワイトボード室</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('カンファレンススペース1', 2)">カンファレンススペース1</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('カンファレンススペース2', 2)">カンファレンススペース2</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('カンファレンススペース3', 2)">カンファレンススペース3</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム1', 2)">プロジェクトルーム1</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム2', 2)">プロジェクトルーム2</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム3', 2)">プロジェクトルーム3</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム4', 2)">プロジェクトルーム4</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('サロン', 2)">サロン</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム5', 3)">プロジェクトルーム5</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム6', 3)">プロジェクトルーム6</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム7', 3)">プロジェクトルーム7</button>
+    <button style="font-size: 6em" type="button" onclick="sampleButtonClicked('プロジェクトルーム8', 3)">プロジェクトルーム8</button>
+
+  </body>
+</html>
