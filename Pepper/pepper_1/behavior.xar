@@ -911,6 +911,7 @@ class MyClass(GeneratedClass):
         #self.onStopped() #activate the output of the box
         tablet = ALProxy("ALTabletService","10.24.11.116",9559)
         tablet.resetTablet()
+        self.onStopped()
 
 
     def onInput_onStop(self):
